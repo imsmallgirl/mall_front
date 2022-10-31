@@ -1,12 +1,10 @@
+import { useState , useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const HeaderWrap = styled.header`
     width: 100%;
-    position: fixed;
-    top:0;
-    left:0;
-    right:0;
     background-color: #fff;
+    position: relative;
 `;
 
 export const Container = styled.div`
@@ -24,6 +22,12 @@ const TopHeader = styled.div`
         justify-content: flex-end;
         align-items: center;
     }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 30;
 `;
 
 const InfoUl = styled.ul`
@@ -67,9 +71,30 @@ const InfoBtn = styled.button`
     cursor: pointer;
 `
 
-const BottomHeader = styled.div`
+const MidHeader = styled.div`
+    position: relative;
+    top: 66.5px;
+    width: 100%;
+    height: 188px;
+`
+
+const MidH1 = styled.h1`
+    font-size: 2.4em;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+`
+
+export const BottomHeader = styled.div`
+    position: relative;
+    top: 64px;
+    left: 0;
+    right: 0;
     padding: 20px 0;
+    border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    background-color: #fff;
 `;
 
 const MainUl = styled.ul`
@@ -93,6 +118,23 @@ const MainLi = styled.li`
 `
 
 function Header() {
+    const [scroll, setScroll] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, []);
+
+    const handleScroll = () => {
+        if(window.scrollY >= 188){
+            setScroll(true);
+        }else {
+            setScroll(false)
+        }
+    }
+
     return (
         <HeaderWrap>
             <TopHeader>
@@ -109,7 +151,10 @@ function Header() {
                     </InfoSearch>
                 </Container>
             </TopHeader>
-            <BottomHeader>
+            <MidHeader>
+                <MidH1>개발자 쇼핑몰</MidH1>
+            </MidHeader>
+            <BottomHeader style={scroll ? {position: "fixed"} : {position: "relative"}}>
                 <Container>
                     <MainUl>
                         <MainLi>Top</MainLi>
