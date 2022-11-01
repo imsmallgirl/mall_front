@@ -1,98 +1,38 @@
-import styled from "styled-components";
-
-const HeaderWrap = styled.header`
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-`;
-
-export const Container = styled.div`
-  width: 100%;
-  max-width: 1320px;
-  margin: 0 auto;
-`;
-
-const TopHeader = styled.div`
-  display: flex;
-  padding: 15px 0;
-  border-bottom: 1px solid #ddd;
-  div:first-child {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-`;
-
-const InfoUl = styled.ul`
-  display: flex;
-  list-style: none;
-  margin-right: 15px;
-  li:first-child {
-    font-weight: bold;
-  }
-  li:last-child {
-    font-weight: bold;
-  }
-`;
-
-const InfoLi = styled.li`
-  font-size: 1.4em;
-  margin-left: 15px;
-  cursor: pointer;
-  color: #666;
-`;
-
-const InfoSearch = styled.div`
-  display: flex;
-`;
-
-const InfoInput = styled.input`
-  background-color: rgba(0, 0, 0, 0.2);
-  border: none;
-  padding: 10px;
-  border-radius: 5px 0 0 5px;
-  color: #333;
-  outline: none;
-`;
-const InfoBtn = styled.button`
-  width: 35px;
-  height: 35.5px;
-  background-color: #eee;
-  border: none;
-  border-radius: 0 5px 5px 0;
-  font-size: 1.6em;
-  cursor: pointer;
-`;
-
-const BottomHeader = styled.div`
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
-`;
-
-const MainUl = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  list-style: none;
-  justify-content: center;
-  li:hover {
-    font-weight: bold;
-  }
-`;
-
-const MainLi = styled.li`
-  width: 10%;
-  text-align: center;
-  font-size: 1.4em;
-  margin: 0 15px;
-  color: #666;
-  cursor: pointer;
-`;
+import { useState, useEffect } from "react";
+import {
+  HeaderWrap,
+  Container,
+  TopHeader,
+  InfoUl,
+  InfoSearch,
+  InfoInput,
+  InfoBtn,
+  InfoLi,
+  MidHeader,
+  MidH1,
+  BottomHeader,
+  MainUl,
+  MainLi,
+} from "./HeaderStyle";
 
 function Header() {
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY >= 188) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+
   return (
     <HeaderWrap>
       <TopHeader>
@@ -109,7 +49,12 @@ function Header() {
           </InfoSearch>
         </Container>
       </TopHeader>
-      <BottomHeader>
+      <MidHeader>
+        <MidH1>개발자 쇼핑몰</MidH1>
+      </MidHeader>
+      <BottomHeader
+        style={scroll ? { position: "fixed" } : { position: "relative" }}
+      >
         <Container>
           <MainUl>
             <MainLi>Top</MainLi>
