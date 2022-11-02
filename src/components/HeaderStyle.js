@@ -7,8 +7,7 @@ export const HeaderWrap = styled.header`
 `;
 
 export const Container = styled.div`
-  width: 100%;
-  max-width: 1320px;
+  width: 80%;
   margin: 0 auto;
 `;
 
@@ -60,6 +59,7 @@ export const InfoInput = styled.input`
   color: #333;
   outline: none;
 `;
+
 export const InfoBtn = styled.button`
   width: 35px;
   height: 35.5px;

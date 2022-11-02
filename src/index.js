@@ -25,7 +25,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	box-sizing:border-box;
+	
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -55,6 +55,7 @@ table {
 a{
 	text-decoration:none;
 }
+*{box-sizing:border-box;}
 `;
 
 root.render(

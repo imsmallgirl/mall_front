@@ -95,6 +95,14 @@ function Login() {
   const onValid = (data) => {
     console.log(data);
   };
+  const onInvalid = (data) => {
+    if (data.id) {
+      return alert(data.id?.message);
+    }
+    if (data.password) {
+      return alert(data.password?.message);
+    }
+  };
 
   return (
     <Main>
@@ -104,7 +112,7 @@ function Login() {
             <h1>Login</h1>
             <h2>WELCOM BACK</h2>
           </LoginTitle>
-          <Form onSubmit={handleSubmit((data) => onValid(data))}>
+          <Form onSubmit={handleSubmit(onValid, onInvalid)}>
             <Input
               {...register("id", {
                 required: "아이디를 입력해주세요!",
@@ -124,7 +132,7 @@ function Login() {
             <Btn>로그인</Btn>
           </Form>
           <Box>
-            <Link to={"/register"}>회원가입</Link>
+            <Link to={"/join"}>회원가입</Link>
           </Box>
         </LoginForm>
       </Container>

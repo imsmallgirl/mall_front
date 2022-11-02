@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
+import Join from "./pages/Join";
 import Login from "./pages/Login";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/join" element={<Join />} />
       </Routes>
     </BrowserRouter>
   );
