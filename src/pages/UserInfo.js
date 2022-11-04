@@ -2,9 +2,6 @@ import styled from "styled-components";
 import InputContainer from "../components/InputContainer";
 import { category } from "../type";
 
-// ========================================================================================
-
-// Style
 const Main = styled.div`
   margin-top: 100px;
 `;
@@ -15,16 +12,14 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-// ========================================================================================
-
-function Join() {
+function UserInfo() {
   return (
     <Main>
       <Container>
-        <InputContainer type={category.join} />
+        <InputContainer type={category.userinfo} />
       </Container>
     </Main>
   );
 }
 
-export default Join;
+export default UserInfo;
