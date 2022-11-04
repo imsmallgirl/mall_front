@@ -151,10 +151,7 @@ function InputContainer({ type }) {
           </InputBox>
         ) : (
           <InputBox>
-            <Label>
-              새 비밀번호
-              <span>*</span>
-            </Label>
+            <Label>새 비밀번호</Label>
             <Input
               {...register("new_pwd", {
                 minLength: { value: 8, message: "8자 이상 입력해 주세요!" },
@@ -181,10 +178,7 @@ function InputContainer({ type }) {
           </InputBox>
         ) : (
           <InputBox>
-            <Label>
-              새 비밀번호 확인
-              <span>*</span>
-            </Label>
+            <Label>새 비밀번호 확인</Label>
             <Input {...register("new_pwd2", {})} type="password" />
           </InputBox>
         )}
