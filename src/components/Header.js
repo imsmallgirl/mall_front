@@ -23,7 +23,7 @@ function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [window.scrollY]);
 
   const handleScroll = () => {
     if (window.scrollY >= 188) {
@@ -66,6 +66,7 @@ function Header() {
           </MainUl>
         </Container>
       </BottomHeader>
+      <div style={scroll ? { height: "50px" } : null}></div>
     </HeaderWrap>
   );
 }
