@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import user from "../UserDB";
 
 // ========================================================================================
 
@@ -155,7 +156,7 @@ function InputContainer({ type }) {
           </UserIcon>
           <UserWelecom>
             <div>
-              어서오세요 <span>민겸</span>님 저희 쇼핑몰을 찾아주셔서
+              어서오세요 <span>{user.name}</span>님 저희 쇼핑몰을 찾아주셔서
               감사합니다.
             </div>
           </UserWelecom>
@@ -182,6 +183,7 @@ function InputContainer({ type }) {
                 value: 10,
                 message: "10글자 이하로 입력해 주세요!",
               },
+              value: user.logined ? user.userId : null,
             })}
           />
           <span>{errors.id?.message}</span>
@@ -240,7 +242,12 @@ function InputContainer({ type }) {
             이름
             <span>*</span>
           </Label>
-          <Input {...register("name", { required: "이름을 입력해 주세요!" })} />
+          <Input
+            {...register("name", {
+              required: "이름을 입력해 주세요!",
+              value: user.logined ? user.name : null,
+            })}
+          />
           <span>{errors.name?.message}</span>
         </InputBox>
         <InputBox>
@@ -249,7 +256,10 @@ function InputContainer({ type }) {
             <span>*</span>
           </Label>
           <Input
-            {...register("address", { required: "주소를 입력해 주세요!" })}
+            {...register("address", {
+              required: "주소를 입력해 주세요!",
+              value: user.logined ? user.address : null,
+            })}
           />
           <span>{errors.address?.message}</span>
         </InputBox>
@@ -259,7 +269,10 @@ function InputContainer({ type }) {
             <span>*</span>
           </Label>
           <Input
-            {...register("email", { required: "이메일을 입력해 주세요!" })}
+            {...register("email", {
+              required: "이메일을 입력해 주세요!",
+              value: user.logined ? user.email : null,
+            })}
             type="email"
           />
           <span>{errors.email?.message}</span>
@@ -269,7 +282,12 @@ function InputContainer({ type }) {
             핸드폰
             <span>*</span>
           </Label>
-          <Input {...register("phon", { required: "번호를 입력해 주세요!" })} />
+          <Input
+            {...register("phon", {
+              required: "번호를 입력해 주세요!",
+              value: user.logined ? user.phonNumber : null,
+            })}
+          />
           <span>{errors.phon?.message}</span>
         </InputBox>
 

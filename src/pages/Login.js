@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import user from "../UserDB";
 
 // ========================================================================================
 
@@ -92,6 +93,8 @@ function Login() {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onValid = (data) => {
     console.log(data);
   };
@@ -102,6 +105,10 @@ function Login() {
     if (data.password) {
       return alert(data.password?.message);
     }
+  };
+
+  const onClick = () => {
+    navigate("/");
   };
 
   return (
@@ -129,7 +136,7 @@ function Login() {
               type="password"
             />
             <Error>{errors.password && errors.password.message}</Error>
-            <Btn>로그인</Btn>
+            <Btn onClick={onClick}>로그인</Btn>
           </Form>
           <Box>
             <Link to={"/join"}>회원가입</Link>

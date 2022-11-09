@@ -6,6 +6,7 @@ const user = {
   email: "apfle@naver.com",
   address: "경기도",
   phonNumber: "01077143764",
+  logined: true,
 };
 
 export default user;

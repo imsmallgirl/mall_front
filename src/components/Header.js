@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import user from "../UserDB";
 import {
   HeaderWrap,
   Container,
@@ -15,7 +17,7 @@ import {
   MainLi,
 } from "./HeaderStyle";
 
-function Header() {
+function Header({ logined }) {
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
@@ -33,13 +35,33 @@ function Header() {
     }
   };
 
+  const onClick = () => {};
+
   return (
     <HeaderWrap>
       <TopHeader>
         <Container>
           <InfoUl>
-            <InfoLi>로그인</InfoLi>
-            <InfoLi>회원가입</InfoLi>
+            {user.logined ? (
+              <div>
+                <Link to="/">
+                  <InfoLi onClick={onClick}>로그아웃</InfoLi>
+                </Link>
+                <Link to={`/user/${user.id}`}>
+                  <InfoLi>회원정보수정</InfoLi>
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link to="/login">
+                  <InfoLi>로그인</InfoLi>
+                </Link>
+                <Link to="/join">
+                  <InfoLi>회원가입</InfoLi>
+                </Link>
+              </div>
+            )}
+
             <InfoLi>장바구니</InfoLi>
             <InfoLi>마이샵</InfoLi>
           </InfoUl>
