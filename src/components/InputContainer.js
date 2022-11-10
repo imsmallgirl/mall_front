@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import user from "../UserDB";
+import { useRecoilValue } from "recoil";
+import loginedAtom from "../atom";
 
 // ========================================================================================
 
@@ -136,6 +138,8 @@ function InputContainer({ type }) {
     formState: { errors },
   } = useForm();
 
+  const logined = useRecoilValue(loginedAtom);
+
   const onValid = (data) => {
     console.log(data);
   };
@@ -183,7 +187,7 @@ function InputContainer({ type }) {
                 value: 10,
                 message: "10글자 이하로 입력해 주세요!",
               },
-              value: user.logined ? user.userId : null,
+              value: logined ? user.userId : null,
             })}
           />
           <span>{errors.id?.message}</span>
@@ -245,7 +249,7 @@ function InputContainer({ type }) {
           <Input
             {...register("name", {
               required: "이름을 입력해 주세요!",
-              value: user.logined ? user.name : null,
+              value: logined ? user.name : null,
             })}
           />
           <span>{errors.name?.message}</span>
@@ -258,7 +262,7 @@ function InputContainer({ type }) {
           <Input
             {...register("address", {
               required: "주소를 입력해 주세요!",
-              value: user.logined ? user.address : null,
+              value: logined ? user.address : null,
             })}
           />
           <span>{errors.address?.message}</span>
@@ -271,7 +275,7 @@ function InputContainer({ type }) {
           <Input
             {...register("email", {
               required: "이메일을 입력해 주세요!",
-              value: user.logined ? user.email : null,
+              value: logined ? user.email : null,
             })}
             type="email"
           />
@@ -285,7 +289,7 @@ function InputContainer({ type }) {
           <Input
             {...register("phon", {
               required: "번호를 입력해 주세요!",
-              value: user.logined ? user.phonNumber : null,
+              value: logined ? user.phonNumber : null,
             })}
           />
           <span>{errors.phon?.message}</span>

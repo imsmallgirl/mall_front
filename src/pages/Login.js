@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import user from "../UserDB";
+import { useSetRecoilState } from "recoil";
+import loginedAtom from "../atom";
 
 // ========================================================================================
 
@@ -93,6 +94,8 @@ function Login() {
     formState: { errors },
   } = useForm();
 
+  const setLogined = useSetRecoilState(loginedAtom);
+
   const navigate = useNavigate();
 
   const onValid = (data) => {
@@ -108,6 +111,7 @@ function Login() {
   };
 
   const onClick = () => {
+    setLogined(true);
     navigate("/");
   };
 
