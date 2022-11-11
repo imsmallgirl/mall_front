@@ -136,7 +136,7 @@ function Login() {
               type="password"
             />
             <Error>{errors.password && errors.password.message}</Error>
-            <Btn onClick={onClick}>로그인</Btn>
+            <Btn>로그인</Btn>
           </Form>
           <Box>
             <Link to={"/join"}>회원가입</Link>
