@@ -295,7 +295,7 @@ function InputContainer({ type }) {
           <span>{errors.phon?.message}</span>
         </InputBox>
 
-        {type === "join" ? <Btn>가입하기</Btn> : <Btn>수정하기</Btn>}
+        {<Btn>{type === "join" ? "가입하기" : "수정하기"}</Btn>}
       </Form>
       ;
     </>
