@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import loginedAtom from "../atom";
 import user from "../UserDB";
 import {
   HeaderWrap,
@@ -17,15 +19,16 @@ import {
   MainLi,
 } from "./HeaderStyle";
 
-function Header({ logined }) {
+function Header() {
   const [scroll, setScroll] = useState(false);
+  const [logined, setLogined] = useRecoilState(loginedAtom);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [window.scrollY]);
+  }, []);
 
   const handleScroll = () => {
     if (window.scrollY >= 188) {
@@ -35,14 +38,16 @@ function Header({ logined }) {
     }
   };
 
-  const onClick = () => {};
+  const onClick = () => {
+    setLogined(false);
+  };
 
   return (
     <HeaderWrap>
       <TopHeader>
         <Container>
           <InfoUl>
-            {user.logined ? (
+            {logined ? (
               <div>
                 <Link to="/">
                   <InfoLi onClick={onClick}>로그아웃</InfoLi>

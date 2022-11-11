@@ -3,16 +3,19 @@ import Header from "./components/Header";
 import Join from "./pages/Join";
 import Login from "./pages/Login";
 import UserInfo from "./pages/UserInfo";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/user/:id" element={<UserInfo />} />
-      </Routes>
+      <RecoilRoot>
+        <Header />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/user/:id" element={<UserInfo />} />
+        </Routes>
+      </RecoilRoot>
     </BrowserRouter>
   );
 }

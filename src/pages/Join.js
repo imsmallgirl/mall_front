@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { HomeIcon } from "../components/HomeIconStyle";
 import InputContainer from "../components/InputContainer";
 import { category } from "../type";
 
@@ -21,6 +23,11 @@ function Join() {
   return (
     <Main>
       <Container>
+        <HomeIcon>
+          <Link to="/">홈</Link>
+          <span>{">"}</span>
+          <span>회원가입</span>
+        </HomeIcon>
         <InputContainer type={category.join} />
       </Container>
     </Main>
