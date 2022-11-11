@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import loginedAtom from "../atom";
+import { HomeIcon } from "../components/HomeIconStyle";
 
 // ========================================================================================
 
 // Style
 
 const Main = styled.main`
-  margin-top: 200px;
+  margin-top: 100px;
 `;
 
 const Container = styled.div`
@@ -48,13 +49,13 @@ const Input = styled.input`
   outline: none;
   transition: 0.5s ease-in-out;
   &:focus {
-    border-color: black;
+    border-bottom: 1px solid black;
   }
   font-size: 1.4em;
 `;
 
 const Error = styled.div`
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: red;
   margin-bottom: 2px;
 `;
@@ -100,6 +101,8 @@ function Login() {
 
   const onValid = (data) => {
     console.log(data);
+    setLogined(true);
+    navigate("/");
   };
   const onInvalid = (data) => {
     if (data.id) {
@@ -110,14 +113,14 @@ function Login() {
     }
   };
 
-  const onClick = () => {
-    setLogined(true);
-    navigate("/");
-  };
-
   return (
     <Main>
       <Container>
+        <HomeIcon>
+          <Link to="/">홈</Link>
+          <span>{">"}</span>
+          <span>로그인</span>
+        </HomeIcon>
         <LoginForm>
           <LoginTitle>
             <h1>Login</h1>
@@ -140,7 +143,7 @@ function Login() {
               type="password"
             />
             <Error>{errors.password && errors.password.message}</Error>
-            <Btn onClick={onClick}>로그인</Btn>
+            <Btn>로그인</Btn>
           </Form>
           <Box>
             <Link to={"/join"}>회원가입</Link>
