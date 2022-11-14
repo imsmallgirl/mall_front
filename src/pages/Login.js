@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import loginedAtom from "../atom";
-import { HomeIcon } from "../components/HomeIconStyle";
+import CurrentPage from "../components/CurrentPage";
 
 // ========================================================================================
 
@@ -14,7 +14,7 @@ const Main = styled.main`
 `;
 
 const Container = styled.div`
-  width: 80%;
+  width: 65%;
   height: 100vh;
   margin: 0 auto;
 `;
@@ -116,11 +116,7 @@ function Login() {
   return (
     <Main>
       <Container>
-        <HomeIcon>
-          <Link to="/">홈</Link>
-          <span>{">"}</span>
-          <span>로그인</span>
-        </HomeIcon>
+        <CurrentPage currentPage="로그인" />
         <LoginForm>
           <LoginTitle>
             <h1>Login</h1>

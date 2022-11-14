@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { HomeIcon } from "../components/HomeIconStyle";
+import CurrentPage from "../components/CurrentPage";
 import InputContainer from "../components/InputContainer";
+import Maintitle from "../components/MainTitle";
 import { category } from "../type";
 
 // ========================================================================================
@@ -12,7 +12,7 @@ const Main = styled.div`
 `;
 
 const Container = styled.div`
-  width: 50%;
+  width: 65%;
   height: 100vh;
   margin: 0 auto;
 `;
@@ -23,11 +23,8 @@ function Join() {
   return (
     <Main>
       <Container>
-        <HomeIcon>
-          <Link to="/">홈</Link>
-          <span>{">"}</span>
-          <span>회원가입</span>
-        </HomeIcon>
+        <CurrentPage currentPage="회원 가입" />
+        <Maintitle title="회원가입" />
         <InputContainer type={category.join} />
       </Container>
     </Main>
