@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import user from "../UserDB";
 import loginedAtom from "../atom";
+import JoinCheck from "./JoinCheckBox";
 
 // ========================================================================================
 
@@ -35,10 +36,10 @@ const Form = styled.form`
 `;
 
 const Btn = styled.button`
-  width: 40%;
+  width: 20%;
   margin: 0 auto;
   margin-top: 80px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   background-color: black;
   color: white;
   font-size: 1.8em;
@@ -94,6 +95,12 @@ function InputContainer({ type }) {
 
   const onInvalid = (errors) => {
     console.log(errors);
+    if (errors.first_Agree) {
+      return alert(errors.first_Agree?.message);
+    }
+    if (errors.second_Agree) {
+      return alert(errors.second_Agree?.message);
+    }
   };
   return (
     <>
@@ -225,6 +232,7 @@ function InputContainer({ type }) {
           />
           <span>{errors.phon?.message}</span>
         </InputBox>
+        {type === "join" ? <JoinCheck register={register} /> : null}
 
         {<Btn>{type === "join" ? "가입하기" : "수정하기"}</Btn>}
       </Form>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CurrentPage from "../components/CurrentPage";
 import InputContainer from "../components/InputContainer";
+
 import Maintitle from "../components/MainTitle";
 import { category } from "../type";
 
@@ -13,7 +14,7 @@ const Main = styled.div`
 
 const Container = styled.div`
   width: 65%;
-  height: 100vh;
+  height: 1000vh;
   margin: 0 auto;
 `;
 
