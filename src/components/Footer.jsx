@@ -137,24 +137,22 @@ function Footer () {
                         </FooterSelect>
                     </FooterContent>
                     <FooterContent width="40%">
-                        <li className="footer-content2">
-                            <ul>
-                                <li>
-                                    <span>배송조회</span>
-                                    <dl>
-                                        <dt>코린택배 (TEL:1234-5678) <button>배송위치 조회하기</button></dt>
-                                        <dd>배송 정보는 해당 택배사를 통해 조회가 가능하십니다.</dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <span>반품 & 교환</span>
-                                    <dl>
-                                        <dt><strong>반품배송지</strong>코린특별시 코린구 코린2길 15</dt>
-                                        <dd>공지사항 및 이용안내를 참고하셔서 지정 택배사로 반품 요청해주세요.</dd>
-                                    </dl>
-                                </li>
-                            </ul>
-                        </li>
+                        <ul className="footer-content2">
+                            <li>
+                                <span>배송조회</span>
+                                <dl>
+                                    <dt>코린택배 (TEL:1234-5678) <button>배송위치 조회하기</button></dt>
+                                    <dd>배송 정보는 해당 택배사를 통해 조회가 가능하십니다.</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <span>반품 & 교환</span>
+                                <dl>
+                                    <dt><strong>반품배송지</strong>코린특별시 코린구 코린2길 15</dt>
+                                    <dd>공지사항 및 이용안내를 참고하셔서 지정 택배사로 반품 요청해주세요.</dd>
+                                </dl>
+                            </li>
+                        </ul>
                     </FooterContent>
                     <FooterContent width="15%">
                         <FooterContentTit>쇼핑 메뉴</FooterContentTit>

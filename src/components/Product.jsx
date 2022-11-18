@@ -51,13 +51,12 @@ const ProductCardPriceDd = styled.dd`
 
 
 function Product ({productColorChart, productId, productImg, productTit, productInfo , productSalePrice, productOriginPrice }) {
-    console.log(productColorChart)
     return(
         <ProductCard>
             <Link to={`/detail/${productId}`}><img src={productImg} alt={productTit} style={{width : 300}}/></Link>
             <ProductColorUl>
-                {productColorChart.map((item) => {
-                    return <ProductColorLi background={item}></ProductColorLi>
+                {productColorChart.map((item, index) => {
+                    return <ProductColorLi key={index} background={item}></ProductColorLi>
                 })}
             </ProductColorUl>
             <ProductCardDl>
