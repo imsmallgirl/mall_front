@@ -3,6 +3,11 @@
     margin: 0;
 }
 
-body {
-    font-size: 62.5%;
+.mainWrap {
+    position: relative;
+    top:58px;
 }
+.headerFixed {
+    position: fixed;
+    top:0;
+  }

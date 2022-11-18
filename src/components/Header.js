@@ -1,5 +1,6 @@
 import { useState , useRef, useEffect } from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const HeaderWrap = styled.header`
     width: 100%;
@@ -43,7 +44,7 @@ const InfoUl = styled.ul`
 `
 
 const InfoLi = styled.li`
-    font-size: 1.4em;
+    font-size: 14px;
     margin-left: 15px;
     cursor: pointer;
     color:#666;
@@ -67,7 +68,7 @@ const InfoBtn = styled.button`
     background-color: #eee;
     border: none;
     border-radius: 0 5px 5px 0;
-    font-size: 1.6em;
+    font-size: 16px;
     cursor: pointer;
 `
 
@@ -79,7 +80,7 @@ const MidHeader = styled.div`
 `
 
 const MidH1 = styled.h1`
-    font-size: 2.4em;
+    font-size: 24px;
     position: absolute;
     top:50%;
     left: 50%;
@@ -88,13 +89,14 @@ const MidH1 = styled.h1`
 
 export const BottomHeader = styled.div`
     position: relative;
-    top: 64px;
+    top: 58px;
     left: 0;
     right: 0;
     padding: 20px 0;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
     background-color: #fff;
+    z-index: 30;
 `;
 
 const MainUl = styled.ul`
@@ -111,7 +113,7 @@ const MainUl = styled.ul`
 const MainLi = styled.li`
     width: 10%;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 14px;
     margin: 0 15px;
     color: #666;
     cursor: pointer;
@@ -152,10 +154,11 @@ function Header() {
                 </Container>
             </TopHeader>
             <MidHeader>
-                <MidH1>개발자 쇼핑몰</MidH1>
+                <Link to={'/'}><MidH1>개발자 쇼핑몰</MidH1></Link>
             </MidHeader>
             <BottomHeader style={scroll ? {position: "fixed"} : {position: "relative"}}>
-                <Container>
+            {/* <BottomHeader className={scroll ? "headerFixed" : ""}> */}
+            <Container>
                     <MainUl>
                         <MainLi>Top</MainLi>
                         <MainLi>One-piece</MainLi>
