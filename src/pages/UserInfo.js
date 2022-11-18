@@ -7,6 +7,7 @@ import InputContainer from "../components/InputContainer";
 import Maintitle from "../components/MainTitle";
 import { category } from "../type";
 import user from "../UserDB";
+import Footer from "../components/Footer";
 
 const Main = styled.div`
   margin-top: 100px;
@@ -72,6 +73,7 @@ function UserInfo() {
         </UserContainer>
         <InputContainer type={category.userinfo} />
       </Container>
+      <Footer />
     </Main>
   );
 }

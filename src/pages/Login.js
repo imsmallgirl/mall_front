@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import loginedAtom from "../atom";
 import CurrentPage from "../components/CurrentPage";
+import Footer from "../components/Footer";
 
 // ========================================================================================
 
@@ -15,7 +16,7 @@ const Main = styled.main`
 
 const Container = styled.div`
   width: 65%;
-  height: 100vh;
+  height: 60vh;
   margin: 0 auto;
 `;
 
@@ -146,6 +147,7 @@ function Login() {
           </Box>
         </LoginForm>
       </Container>
+      <Footer />
     </Main>
   );
 }

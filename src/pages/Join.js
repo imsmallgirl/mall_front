@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CurrentPage from "../components/CurrentPage";
+import Footer from "../components/Footer";
 import InputContainer from "../components/InputContainer";
 
 import Maintitle from "../components/MainTitle";
@@ -14,7 +15,7 @@ const Main = styled.div`
 
 const Container = styled.div`
   width: 65%;
-  height: 1000vh;
+  height: 200vh;
   margin: 0 auto;
 `;
 
@@ -28,6 +29,7 @@ function Join() {
         <Maintitle title="회원가입" />
         <InputContainer type={category.join} />
       </Container>
+      <Footer />
     </Main>
   );
 }
