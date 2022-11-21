@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -55,9 +56,36 @@ const AgreeInput = styled.input``;
 
 function JoinCheck({ register }) {
   const [allCheck, setAllCheck] = useState(false);
-  const onClick = () => {
-    setAllCheck(!allCheck);
+  const [firstCheck, setFirestCheck] = useState(false);
+  const [secondCheck, setSecondCheck] = useState(false);
+  const [thirdCheck, setThirdCheck] = useState(false);
+  const [smsCheck, setSmsCheck] = useState(false);
+  const [phonCheck, setPhonCheck] = useState(false);
+
+  const onAllCheck = () => {
+    if (allCheck === false) {
+      setFirestCheck(true);
+      setSecondCheck(true);
+      setThirdCheck(true);
+      setSmsCheck(true);
+      setPhonCheck(true);
+    } else {
+      setFirestCheck(false);
+      setSecondCheck(false);
+      setThirdCheck(false);
+      setSmsCheck(false);
+      setPhonCheck(false);
+    }
   };
+
+  useEffect(() => {
+    if (firstCheck && secondCheck && thirdCheck && smsCheck && phonCheck) {
+      setAllCheck(true);
+    } else {
+      setAllCheck(false);
+    }
+  }, [firstCheck, secondCheck, thirdCheck, smsCheck, phonCheck]);
+
   return (
     <>
       <Title>전체 동의</Title>
@@ -67,7 +95,8 @@ function JoinCheck({ register }) {
             <AllagreeInput
               id="all_check"
               type="checkbox"
-              onClick={onClick}
+              onClick={onAllCheck}
+              checked={allCheck}
               {...register("all_check")}
             ></AllagreeInput>
             <Label for="all_check">
@@ -143,7 +172,8 @@ function JoinCheck({ register }) {
             <AgreeInput
               id="first_Agree"
               type="checkbox"
-              checked={allCheck ? true : null}
+              onClick={() => setFirestCheck(!firstCheck)}
+              checked={firstCheck}
               {...register("first_Agree", {
                 required: "이용약관에 동의해주세요!",
               })}
@@ -186,7 +216,8 @@ function JoinCheck({ register }) {
             <AgreeInput
               id="second_Agree"
               type="checkbox"
-              checked={allCheck ? true : null}
+              onClick={() => setSecondCheck(!secondCheck)}
+              checked={secondCheck}
               {...register("second_Agree", {
                 required: "개인정보 수집 및 이용에 동의해주세요!",
               })}
@@ -214,7 +245,8 @@ function JoinCheck({ register }) {
             <AgreeInput
               id="third_Agree"
               type="checkbox"
-              checked={allCheck ? true : null}
+              onClick={() => setThirdCheck(!thirdCheck)}
+              checked={thirdCheck}
               {...register("third_Agree", { required: false })}
             />
             <Label for="third_Agree">동의함</Label>
@@ -243,7 +275,8 @@ function JoinCheck({ register }) {
             <AgreeInput
               id="sms_Agree"
               type="checkbox"
-              checked={allCheck ? true : null}
+              onClick={() => setSmsCheck(!smsCheck)}
+              checked={smsCheck}
               {...register("sms_Agree", { required: false })}
             />
             <Label for="sms_Agree">동의함</Label>
@@ -253,7 +286,8 @@ function JoinCheck({ register }) {
             <AgreeInput
               id="email_Agree"
               type="checkbox"
-              checked={allCheck ? true : null}
+              onClick={() => setPhonCheck(!phonCheck)}
+              checked={phonCheck}
               {...register("email_Agree", { required: false })}
             />
             <Label for="email_Agree">동의함</Label>

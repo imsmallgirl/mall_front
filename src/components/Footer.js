@@ -5,6 +5,7 @@ import "../components/footer.css";
 
 const FooterWrap = styled.div`
   border-top: 1px solid #333;
+  height: 40vh;
 `;
 
 const FooterMenuUl = styled.ul`

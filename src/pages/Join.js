@@ -15,7 +15,7 @@ const Main = styled.div`
 
 const Container = styled.div`
   width: 65%;
-  height: 200vh;
+  height: 250vh;
   margin: 0 auto;
 `;
 

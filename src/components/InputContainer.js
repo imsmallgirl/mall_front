@@ -94,12 +94,11 @@ function InputContainer({ type }) {
   };
 
   const onInvalid = (errors) => {
-    console.log(errors);
-    if (errors.first_Agree) {
-      return alert(errors.first_Agree?.message);
+    if (!errors.first_Agree) {
+      return alert(errors.first_Agree.message);
     }
-    if (errors.second_Agree) {
-      return alert(errors.second_Agree?.message);
+    if (!errors.second_Agree) {
+      return alert(errors.second_Agree.message);
     }
   };
   return (
@@ -111,7 +110,7 @@ function InputContainer({ type }) {
           <span>필수입력사항</span>
         </div>
       </Title>
-      <Form method="POST" onSubmit={handleSubmit(onValid, onInvalid)}>
+      <Form onSubmit={handleSubmit(onValid, onInvalid)}>
         <InputBox>
           <Label>
             아이디
