@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import loginedAtom from "../atom";
-import user from "../UserDB";
+import loginedAtom from "../../atom";
+import user from "../../UserDB";
 import {
   HeaderWrap,
   Container,

@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import loginedAtom from "../atom";
-import CurrentPage from "../components/CurrentPage";
-import Footer from "../components/Footer";
+import CurrentPage from "../components/shared/CurrentPage";
 
 // ========================================================================================
 
@@ -147,7 +146,6 @@ function Login() {
           </Box>
         </LoginForm>
       </Container>
-      <Footer />
     </Main>
   );
 }

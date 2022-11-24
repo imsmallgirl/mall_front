@@ -1,6 +1,6 @@
 const user = {
   id: 1,
-  userId: "asdasd",
+  userId: "wodke123",
   userPwd: "1234",
   name: "김민겸",
   email: "apfle@naver.com",

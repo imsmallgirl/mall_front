@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
-import CurrentPage from "../components/CurrentPage";
-import InputContainer from "../components/InputContainer";
-import Maintitle from "../components/MainTitle";
-import { category } from "../type";
+import CurrentPage from "../components/shared/CurrentPage";
+import Maintitle from "../components/shared/MainTitle";
+
 import user from "../UserDB";
-import Footer from "../components/Footer";
+import SubTitle from "../components/shared/SubTitle";
+import InputMaker from "../components/InputContainer";
+import { useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import loginedAtom from "../atom";
 
 const Main = styled.div`
   margin-top: 100px;
@@ -54,7 +57,53 @@ const UserWelecom = styled.div`
   }
 `;
 
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+`;
+
+const Btn = styled.button`
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 8px 10px;
+  background-color: black;
+  color: white;
+  font-size: 1.8em;
+  cursor: pointer;
+`;
+
 function UserInfo() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const logined = useRecoilValue(loginedAtom);
+
+  const onValid = () => {};
+  const oninvalid = () => {
+    if (errors.id) {
+      return alert(errors.id.message);
+    }
+    if (errors.password) {
+      return alert(errors.password.message);
+    }
+    if (errors.name) {
+      return alert(errors.name.message);
+    }
+    if (errors.address) {
+      return alert(errors.address.message);
+    }
+    if (errors.phonNumber) {
+      return alert(errors.phonNumber.message);
+    }
+    if (errors.email) {
+      return alert(errors.email.message);
+    }
+  };
   return (
     <Main>
       <Container>
@@ -71,9 +120,84 @@ function UserInfo() {
             </div>
           </UserWelecom>
         </UserContainer>
-        <InputContainer type={category.userinfo} />
+        <SubTitle title="회원 정보" />
+        <Form onSubmit={handleSubmit(onValid, oninvalid)}>
+          <InputMaker
+            type="text"
+            register={register}
+            label="아이디"
+            name="id"
+            required={true}
+            minLength={5}
+            maxLength={10}
+            errorMsg={errors.id?.message}
+            value={logined ? user.userId : null}
+          />
+          <InputMaker
+            type="password"
+            register={register}
+            label="새 비밀번호"
+            name="new_password"
+            required={false}
+            minLength={8}
+            maxLength={16}
+            errorMsg={errors.new_password?.message}
+          />
+          <InputMaker
+            type="password"
+            register={register}
+            label="새 비밀번호 확인"
+            name="new_password_confirm"
+            required={false}
+            minLength={8}
+            maxLength={16}
+            errorMsg={errors.new_password_confirm?.message}
+          />
+          <InputMaker
+            type="text"
+            register={register}
+            label="이름"
+            name="name"
+            required={true}
+            minLength={0}
+            maxLength={6}
+            errorMsg={errors.name?.message}
+            value={logined ? user.name : null}
+          />
+          <InputMaker
+            type="text"
+            register={register}
+            label="주소"
+            name="address"
+            required={true}
+            errorMsg={errors.address?.message}
+            value={logined ? user.address : null}
+          />
+          <InputMaker
+            type="text"
+            register={register}
+            label="핸드폰"
+            name="phonNumber"
+            required={true}
+            minLength={0}
+            maxLength={11}
+            errorMsg={errors.phonNumber?.message}
+            value={logined ? user.phonNumber : null}
+          />
+          <InputMaker
+            type="email"
+            register={register}
+            label="이메일"
+            name="email"
+            required={true}
+            minLength={0}
+            maxLength={15}
+            errorMsg={errors.email?.message}
+            value={logined ? user.email : null}
+          />
+          <Btn>수정하기</Btn>
+        </Form>
       </Container>
-      <Footer />
     </Main>
   );
 }

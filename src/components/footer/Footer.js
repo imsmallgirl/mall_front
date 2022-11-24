@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Container } from "./HeaderStyle";
-import "../components/footer.css";
+import { Container } from "../header/HeaderStyle";
+import "./footer.css";
 
 const FooterWrap = styled.div`
   border-top: 1px solid #333;

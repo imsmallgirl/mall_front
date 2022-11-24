@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Title = styled.h1`
   font-size: 1.8em;
-  margin: 35px 0px 8px 0px;
+  margin: 100px 0px 8px 0px;
 `;
 const Container = styled.div`
   width: 100%;

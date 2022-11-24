@@ -1,9 +1,10 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Join from "./pages/Join";
 import Login from "./pages/Login";
 import UserInfo from "./pages/UserInfo";
 import { RecoilRoot } from "recoil";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/user/:id" element={<UserInfo />} />
         </Routes>
+        <Footer />
       </RecoilRoot>
     </BrowserRouter>
   );
