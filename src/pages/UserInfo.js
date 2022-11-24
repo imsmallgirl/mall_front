@@ -83,7 +83,11 @@ function UserInfo() {
 
   const logined = useRecoilValue(loginedAtom);
 
-  const onValid = () => {};
+  const onValid = (data) => {
+    if (data.new_password !== data.new_password_confirm) {
+      return alert("새 비밀번호와 새 비밀번호 확인이 다릅니다!");
+    }
+  };
   const oninvalid = () => {
     if (errors.id) {
       return alert(errors.id.message);
@@ -142,6 +146,7 @@ function UserInfo() {
             minLength={8}
             maxLength={16}
             errorMsg={errors.new_password?.message}
+            value={null}
           />
           <InputMaker
             type="password"
@@ -152,6 +157,7 @@ function UserInfo() {
             minLength={8}
             maxLength={16}
             errorMsg={errors.new_password_confirm?.message}
+            value={null}
           />
           <InputMaker
             type="text"

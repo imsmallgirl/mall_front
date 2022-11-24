@@ -46,7 +46,12 @@ function Join() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onValid = () => {};
+
+  const onValid = (data) => {
+    if (data.confirmPassword !== data.password) {
+      return alert("비밀번호와 비밀번호 확인이 다릅니다!");
+    }
+  };
   const oninvalid = (errors) => {
     if (errors.id) {
       return alert(errors.id.message);
