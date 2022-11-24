@@ -1,15 +1,14 @@
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import styled from "styled-components";
+import { useForm } from "react-hook-form";
+import { useRecoilValue } from "recoil";
 
 import CurrentPage from "../components/shared/CurrentPage";
 import Maintitle from "../components/shared/MainTitle";
-
-import user from "../UserDB";
 import SubTitle from "../components/shared/SubTitle";
 import InputMaker from "../components/InputContainer";
-import { useForm } from "react-hook-form";
-import { useRecoilValue } from "recoil";
+import user from "../UserDB";
 import loginedAtom from "../atom";
 
 const Main = styled.div`
